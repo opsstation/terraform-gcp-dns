@@ -19,7 +19,7 @@ variable "label_order" {
 variable "managedby" {
   type        = string
   default     = ""
-  description = "ManagedBy, eg 'Opz0'."
+  description = "ManagedBy,opsstation"
 }
 
 variable "repository" {
