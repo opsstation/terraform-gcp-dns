@@ -7,11 +7,15 @@ provider "google" {
 ##### vpc module call.
 #####==============================================================================
 module "vpc" {
-  source                                    = "git::git@github.com:opsstation/terraform-gcp-vpc.git?ref=master"
-  name                                      = "app"
+  source                                    = "git::git@github.com:opsstation/terraform-gcp-vpc.git?ref=v1.0.0"
+  name                                      = "dev"
   environment                               = "test"
+  label_order                               = ["name", "environment"]
+  mtu                                       = 1460
   routing_mode                              = "REGIONAL"
+  google_compute_network_enabled            = true
   network_firewall_policy_enforcement_order = "AFTER_CLASSIC_FIREWALL"
+  delete_default_routes_on_create           = false
 }
 #####==============================================================================
 ##### dns-public-zone module call.
@@ -19,7 +23,7 @@ module "vpc" {
 module "dns_public_zone" {
   source                             = "../.."
   type                               = "public"
-  name                               = "app-test"
+  name                               = "dev-test"
   environment                        = "public"
   domain                             = var.domain
   labels                             = var.labels

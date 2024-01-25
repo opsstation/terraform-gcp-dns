@@ -1,5 +1,5 @@
 module "labels" {
-  source      = "git::git@github.com:opsstation/terraform-gcp-labels.git?ref=master"
+  source      = "git::git@github.com:opsstation/terraform-gcp-labels.git?ref=v1.0.0"
   name        = var.name
   environment = var.environment
   label_order = var.label_order
